@@ -1,20 +1,19 @@
-
 <div class="fields">
   <p>A tagged image slideshow will emit images from the main image content library that're tagged with the tags you enter below.</p>
 </div>
 
 <%= f.cms_text_field :name %>
-
 <%= f.cms_tag_list :instructions => 'Images tagged with the tags you select here will be included in this slideshow.' %>
+<%= f.cms_drop_down :image_zoom, TaggedImageSlideshow::IMAGE_ZOOM_OPTIONS, :instructions => 'Controls which dimension is most important when scaling.' %>
 
 <%= f.cms_text_field :width, :instructions => 'In pixels. Defaults to 640' %>
 <%= f.cms_text_field :height, :instructions => 'In pixels. Defaults to 480' %>
-<%= f.cms_drop_down :image_order, [['Image Name','name'],['Image Creation Date','created_at']], :instructions => 'Defaults to image name'  %>
-<%= f.cms_drop_down :speed, [['1 second',1000],['1/2 second',500],['1.5 seconds',1500],['2 seconds',2000],['3 seconds',3000],['4 seconds',4000]], :instructions => 'The speed of the slide transition effect in seconds. 1 second is a good choice.' %>
+<%= f.cms_text_field :quality, :instructions => 'JPG image quality - 0 to 100, where 100 is uncompressed. Default is 85' %>
+<%= f.cms_drop_down :image_order, TaggedImageSlideshow::IMAGE_ORDER_OPTIONS, :instructions => 'Defaults to image name'  %>
+<%= f.cms_drop_down :speed, TaggedImageSlideshow::SPEED_OPTIONS, :instructions => 'The speed of the slide transition effect in seconds. 1 second is a good choice.' %>
 
-<%= f.cms_drop_down :timeout, [['4 seconds',4000],['1 second',1000],['2 seconds',2000],['3 seconds',3000],['5 seconds',5000],['6 seconds',6000],['7 seconds',7000],['8 seconds',8000],['9 seconds',9000],['10 seconds',10000],['15 seconds',15000],['20 seconds',20000],['30 seconds',30000],['1 minute',60000]], :instructions => 'The amount of time a slide is shown in milliseconds. After this time is reached, the slide transitions to the next one. Defaults to 4000, or 4 seconds.' %>
+<%= f.cms_drop_down :timeout, TaggedImageSlideshow::TIMEOUT_OPTIONS, :instructions => 'The amount of time a slide is shown in milliseconds. After this time is reached, the slide transitions to the next one. Defaults to 4000, or 4 seconds.' %>
 <%= f.cms_check_box :do_not_loop, :instructions => 'Only play the slideshow once.' %>
 <%= f.cms_check_box :emit_jquery, :label => 'Output jquery javascript library?', :instructions => "Check this to include the jQuery library in the <head> section of this page. If you're already using jQuery and the library is loaded on this page, you don't need to check  this.." %>
-<%= f.cms_drop_down :effect, ['blindX','blindY','blindZ','cover','curtainX','curtainY','fade','fadeZoom','growX','growY','none','scrollUp','scrollDown','scrollLeft','scrollRight','scrollHorz','scrollVert','shuffle','slideX','slideY','toss','turnUp','turnDown','turnLeft','turnRight','uncover','wipe','zoom'], 
-  :instructions => 'The transition effect. Defaults to "fade". See http://jquery.malsup.com/cycle/browser.html for an overview of the effects' %>
+<%= f.cms_drop_down :effect, TaggedImageSlideshow::EFFECT_OPTIONS, :instructions => 'The transition effect. Defaults to "fade". See http://jquery.malsup.com/cycle/browser.html for an overview of the effects' %>
 

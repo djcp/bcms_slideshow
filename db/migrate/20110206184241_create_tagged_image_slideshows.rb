@@ -2,8 +2,10 @@ class CreateTaggedImageSlideshows < ActiveRecord::Migration
   def self.up
     create_content_table :tagged_image_slideshows do |t|
       t.integer :width, :default => 640
+      t.string :image_zoom, :default => 'width'
       t.integer :height, :default => 480
       t.string :image_order, :default => 'name'
+      t.integer :quality, :default => 85
       t.integer :speed, :default => 1000
       t.integer :timeout, :default => 4000
       t.boolean :do_not_loop
