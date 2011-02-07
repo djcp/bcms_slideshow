@@ -1,0 +1,29 @@
+<%- if @content_block.emit_jquery %>
+  <%- require_javascript_include(['/bcms/slideshow/jquery-1.5.min.js', '/bcms/slideshow/jquery.easing.1.1.1.js', '/bcms/slideshow/jquery.cycle.all.latest.js']) %>
+<%- else %>
+  <%- require_javascript_include(['/bcms/slideshow/jquery.easing.1.1.1.js', '/bcms/slideshow/jquery.cycle.all.latest.js']) %>
+<%- end %>
+<%- require_stylesheet_link(['/bcms/slideshow/tagged_slideshow.css']) %>
+<div class="tagged-slideshow" id="tagged-slideshow-<%= @content_block.id %>">
+  <%- unless @content_block.images.blank? %>
+    <div class="tagged-slideshow-image-container" id="tagged-slideshow-image-container-<%= @content_block.id %>" style="width: <%= @content_block.width %>px; height: <%= @content_block.height %>px">
+    <%- @content_block.images.each do |im| %>
+      <div class="slideshow-image" style="width: <%= @content_block.width %>px; height: <%= @content_block.height %>px; background-image:url('<%= thumbnail(im, "#{@content_block.width}x#{@content_block.height}") %>')" >
+      </div>
+      <%- end %>
+    </div>
+  <%- else %>
+    <h3>None found.</h3>
+  <%- end %>
+</div>
+
+<%- javascript_tag do %>
+jQuery(document).ready(function(){
+  jQuery('#tagged-slideshow-image-container-<%= @content_block.id %>').cycle({
+    fx: '<%= @content_block.effect %>',
+    timeout: <%= @content_block.timeout %>,
+    <%= (@content_block.do_not_loop) ? 'nowrap: 1,' : '' %>
+    speed: <%= @content_block.speed %>
+  });
+});
+<%- end %>

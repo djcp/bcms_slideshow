@@ -1,0 +1,30 @@
+h1. bcms_slideshow
+
+For now, it creates a slideshow of tagged images and uses the excellent "jQuery cycle":http://jquery.malsup.com/cycle/ plugin, exposing a few relevant options. Soon it'll allow you to create annotated slideshows that include arbitrary HTML as an overlay on the image.
+
+h2. Installation
+
+Use the normal module installation process "documented here.":http://guides.browsercms.org/installing_modules.html
+
+h2. Requirements
+
+"bcms_thumbnail":http://rubygems.org/gems/bcms_thumbnail >= 1.0.5, which in turn requires "mini_magick":http://http://rubygems.org/gems/mini_magick
+
+You'll need to install bcms_thumbnail before using this module.
+
+h2. Known issues
+
+The jQuery that comes with the current stable browsercms is too old for the Cycle plugin. We include a newer jQuery (1.5), but it conflicts when the Visual Editor is turned on. This means the cycle plugin is essentially broken when the Visual Editor is turned on. If you turn off the Visual Editor, you'll be able to see your slideshow as it's meant to be. 
+
+h2. See also
+
+"The jQuery cycle effects browser":http://jquery.malsup.com/cycle/browser.html , which gives you an overview of the different slide transition effects.
+
+h2. License
+
+LGPL, the same as BrowserCMS.
+
+h2. Author
+
+Daniel Collis Puro
+dan@collispuro.com
